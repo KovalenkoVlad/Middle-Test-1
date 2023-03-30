@@ -6,7 +6,6 @@ def parse_line(line: str) -> tuple:
     if len(items) < 4:
         raise ValueError(f'Not enough values to unpack (expected at least 4, got {len(items)})')
     _, country, area, population = items
-    area = float(area)
 
     return country, area, population
 
@@ -27,12 +26,16 @@ def sort_by_population(file_name):
     return data
 def main(file_name):
     res = sort_by_area(file_name)
+    counter = 1
     for item in res:
-        print(f'{item}')
+        print(f'{counter}) {item}')
+        counter += 1
     Line()
+    counter = 1
     res1 = sort_by_population(file_name)
     for item in res1:
-        print(f'{item}')
+        print(f'{counter}) {item}')
+        counter += 1
 
 if __name__ == '__main__':
     main('population.txt')
