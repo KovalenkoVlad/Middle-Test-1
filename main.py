@@ -9,9 +9,18 @@ def parse_line(line: str) -> tuple:
 
     return country, area, population
 
+def sort_by_area(file_name):
+    data = []
+    with open(file_name) as file:
+        for line in file:
+            data.append(parse_line(line))
+    data = sorted(data, key=lambda x: float(x[1]), reverse=True)
+    return data
 
 def main(file_name):
-
+    res = sort_by_area(file_name)
+    for item in res:
+        print(f'{item}')
 
 if __name__ == '__main__':
     main('population.txt')
