@@ -1,5 +1,5 @@
 import pytest
-from main import parse_line
+from main import parse_line,sort_by_area,sort_by_population
 def test_parse_line():
     coutry,area,population = parse_line('1 Romania 238397 92046')
     assert area == '238397'
@@ -12,3 +12,12 @@ def test_parse_line():
                                           ])
 def test_parse_line(line,result):
     assert parse_line(line) == result
+
+def test_sort_by_area(prepare_text_file):
+    expected = [('Germany','357588','83130000'),
+                ('Poland' ,'312679' ,'38433600'),
+                ('Romania','238397','92046'),
+                ('Denmark','43094','5792202')]
+    result = sort_by_area(prepare_text_file)
+    assert expected == result
+
