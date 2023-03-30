@@ -1,5 +1,6 @@
 
-
+def Line():
+    print("===============================")
 def parse_line(line: str) -> tuple:
     items = line.split()
     if len(items) < 4:
@@ -17,9 +18,20 @@ def sort_by_area(file_name):
     data = sorted(data, key=lambda x: float(x[1]), reverse=True)
     return data
 
+def sort_by_population(file_name):
+    data = []
+    with open(file_name) as file:
+        for line in file:
+            data.append(parse_line(line))
+    data = sorted(data, key=lambda x: float(x[2]), reverse=True)
+    return data
 def main(file_name):
     res = sort_by_area(file_name)
     for item in res:
+        print(f'{item}')
+    Line()
+    res1 = sort_by_population(file_name)
+    for item in res1:
         print(f'{item}')
 
 if __name__ == '__main__':
