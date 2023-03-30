@@ -21,3 +21,11 @@ def test_sort_by_area(prepare_text_file):
     result = sort_by_area(prepare_text_file)
     assert expected == result
 
+def test_sort_by_population(prepare_text_file):
+    expected = [('Germany','357588','83130000'),
+                ('Poland' ,'312679' ,'38433600'),
+                ('Denmark','43094','5792202'),
+                ('Romania','238397','92046')
+                ]
+    result = sort_by_population(prepare_text_file)
+    assert expected == result
